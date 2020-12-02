@@ -3,6 +3,11 @@ button > span {
     font-size: 2rem;
 }
 
+.jumbotron {
+    background-color: black;
+    color: white;
+}
+
 #button-clear {
     background-color: red;
     border: none;

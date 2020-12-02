@@ -117,17 +117,37 @@
     var homeTeamArrayW17 = ["Bills", "Panthers", "Bears", "Bengals", "Browns", "Lions", "Texans", "Patriots", 
     "Giants", "Buccaneers", "Colts", "Chiefs", "Eagles", "Broncos", "Rams", "49ers"];
     var awayTeamArrayW17 = ["Dolphins", "Saints", "Packers", "Ravens", "Steelers", "Vikings", "Titans", "Jets", 
-    "Cowboys", "Falcons", "Jaguars", "Chargers", "Redskins", "Raiders", "Cardinals", "Seahawks", ];
-    
-    var homeTeamArrayW13 = ["NE", "LA", "LV"]  
-    var awayTeamArrayW13 = ["DET", "NO", "SF"]
+    "Cowboys", "Falcons", "Jaguars", "Chargers", "Redskins", "Raiders", "Cardinals", "Seahawks"];
+
+    var homeTeamArrayW16 = ["Saints", "Lions", "Cardinals", "Chargers", "Raiders", "Jets", "Ravens", "Texans", 
+    "Jaguars", "Chiefs", "Steelers", "Redskins", "Seahawks", "Cowboys", "Packers", "Patriots"];
+    var awayTeamArrayW16 = ["Vikings", "Buccaneers", "49ers", "Broncos", "Dolphins", "Browns", "Giants", "Bengals", 
+    "Bears", "Falcons", "Colts", "Panthers", "Rams", "Eagles", "Titans", "Bills"];
+
+    var homeTeamArrayW15 = ["Raiders", "Packers", "Broncos", "Colts", "Rams", "Titans", "Falcons", "Ravens", 
+    "Dolphins", "Vikings", "Giants", "Redskins", "Cardinals", "Saints", "Cowboys", "Bengals"];
+    var awayTeamArrayW15 = ["Chargers", "Panthers", "Bills", "Texans", "Jets", "Lions", "Buccaneers", "Jaguars",
+    "Patriots", "Bears", "Browns", "Seahawks", "Eagles", "Chiefs", "49ers", "Steelers"];
+
+    var homeTeamArrayW14 = ["Rams", "Panthers", "Bears", "Bengals", "Lions", "Jaguars", "Dolphins", "Giants", 
+    "Buccaneers", "Raiders", "Seahawks", "Chargers", "Eagles", "49ers", "Bills", "Browns"];
+    var awayTeamArrayW14 = ["Patriots", "Broncos", "Texans", "Cowboys", "Packers", "Titans", "Chiefs", "Cardinals", 
+    "Vikings", "Colts", "Jets", "Falcons", "Saints", "Redskins", "Steelers", "Ravens"];
+
+    var homeTeamArrayW13 = ["Ravens", "Falcons", "Bears", "Texans", "Dolphins", "Vikings", "Jets", "Steelers", 
+    "Titans", "Cardinals", "Seahawks", "Packers", "Chargers", "Chiefs", "49ers"];
+    var awayTeamArrayW13 = ["Cowboys", "Saints", "Lions", "Colts", "Bengals", "Jaguars", "Raiders", "Redskins", 
+    "Browns", "Rams", "Giants", "Eagles", "Patriots", "Broncos", "Bills"];
+      
+    var homeTeamArrayTest = ["NE", "LA", "LV"]  
+    var awayTeamArrayTest = ["DET", "NO", "SF"]
 
     var homeTeamArray = []
     var awayTeamArray = []
      
 
   function loadTeams() {
-    console.log("Hello")
+  //console.log("Hello")
     
 
   addBreak1 = "<h3 id='break-line'></h3>"
@@ -143,7 +163,7 @@
   buttonSpec = ""
   buttonSpec2 = ""
 
-  console.log(homeTeamArray.length)  
+  //console.log(homeTeamArray.length)  
 
   for (i = 0; i <homeTeamArray.length; i++ ) {
     addAButton2 = i + 1
@@ -162,18 +182,18 @@
 
   $(".btn-primary").fadeOut(0)
 
-  time = 1
+  time = 5000
 
   for (i = 0; i <homeTeamArray.length; i++ ) {
 
     gameNum = i + 1
     gameLit = ".game" + gameNum
-    console.log(gameLit)
+    //console.log(gameLit)
     
     $(gameLit).fadeIn(time)
     //$(gameLit).slideUp
 
-    time = time + time
+    //time = time + time
   }
 }
 
@@ -189,8 +209,8 @@
       $(".away-body").on("click", "button", (function() {
         //console.log(event.path[1])
         //console.log("In Click")
-        console.log(awayTeamArray)
-        console.log(this.value)
+        //console.log(awayTeamArray)
+        //console.log(this.value)
         //$("#G1-pick").text($(this).text());
         //$(this).slideUp()
 
@@ -203,11 +223,11 @@
   
         }
 
-        console.log(holdIndex)
+        //console.log(holdIndex)
 
         pickTeam1 = "#G" + holdIndex + "-pick"
 
-        console.log(pickTeam1)
+        //console.log(pickTeam1)
 
         $(pickTeam1).text($(this).text());
 
@@ -216,8 +236,8 @@
       $(".home-body").on("click", "button", (function() {
         //console.log(event.path[1])
         //console.log("In Click")
-        console.log(awayTeamArray)
-        console.log(this.value)
+        //console.log(awayTeamArray)
+        //console.log(this.value)
         //$("#G1-pick").text($(this).text());
         //$(this).slideUp()
 
@@ -230,11 +250,11 @@
   
         }
 
-        console.log(holdIndex)
+        //console.log(holdIndex)
 
         pickTeam1 = "#G" + holdIndex + "-pick"
 
-        console.log(pickTeam1)
+        //console.log(pickTeam1)
 
         $(pickTeam1).text($(this).text());
 
@@ -242,7 +262,7 @@
       
       // Call initializeScreen so we can reset the state of our app
       $(".clear").on("click", function() {
-      console.log("In Clear")
+      //console.log("In Clear")
       initializeScreen();
       });
          
@@ -265,24 +285,37 @@
         $(".game14").remove();
         $(".game15").remove();
         $(".game16").remove();
-        
-        //$(".home-body").remove()
-        //$(".weeks").remove()
-         
-      
-        console.log("IN WEEKS BUTTON")
-        console.log($(this).val())
+              
+        //console.log("IN WEEKS BUTTON")
+        //console.log($(this).val())
         weekPicked = $(this).val()
+
+        if (weekPicked == "13") {
+          homeTeamArray = homeTeamArrayW13
+          awayTeamArray = awayTeamArrayW13
+        } 
+        
+        if (weekPicked == "14") {
+          homeTeamArray = homeTeamArrayW14
+          awayTeamArray = awayTeamArrayW14
+        } 
+
+        if (weekPicked == "15") {
+          homeTeamArray = homeTeamArrayW15
+          awayTeamArray = awayTeamArrayW15
+        } 
+
+        if (weekPicked == "16") {
+          homeTeamArray = homeTeamArrayW16
+          awayTeamArray = awayTeamArrayW16
+        } 
 
         if (weekPicked == "17") {
           homeTeamArray = homeTeamArrayW17
           awayTeamArray = awayTeamArrayW17
-        } else {
-          homeTeamArray = homeTeamArrayW13
-          awayTeamArray = awayTeamArrayW13
-        }
-
-        console.log(homeTeamArray)
+        } 
+        
+        //console.log(homeTeamArray)
 
         initializeScreen();
         loadTeams()
@@ -291,7 +324,7 @@
 
             
       // Call initializeScreen so we can set the state of our app
-      console.log("In Init") 
+      //console.log("In Init") 
       initializeScreen();
     });
 
