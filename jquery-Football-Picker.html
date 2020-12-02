@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Football Pool Picker</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- Added a link to our external stylesheet-->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="jumbotron">
+    <h1 class="text-center">jQuery Football Picker</h1>
+    <h3 class="text-center">Quick & simple button logic using the power of jQuery!</h3>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Home Team Card -->
+      <div class="col-lg-3">
+        <div class="card">
+          <h3 class="card-header">Home Teams</h3>
+
+          <div class="home-body">
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- AWAY Team Card -->
+      <div class="col-lg-3">
+        <div class="card">
+          <h3 class="card-header">Away Teams</h3>
+
+          <div class="away-body">
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- PICKS Card -->
+      <div class="col-lg-6">
+        <div class="card">
+          <h3 class="card-header">Picks</h3>
+          <div class="card-body">
+            <h1 id="G1-pick"></h1>
+            <h1 id="G2-pick"></h1>
+            <h1 id="G3-pick"></h1>
+            <h1 id="G4-pick"></h1>
+            <h1 id="G5-pick"></h1>
+            <h1 id="G6-pick"></h1>
+            <h1 id="G7-pick"></h1>
+            <h1 id="G8-pick"></h1>
+            <h1 id="G9-pick"></h1>
+            <h1 id="G10-pick"></h1>
+            <h1 id="G11-pick"></h1>
+            <h1 id="G12-pick"></h1>
+            <h1 id="G13-pick"></h1>
+            <h1 id="G14-pick"></h1>
+            <h1 id="G15-pick"></h1>
+            <h1 id="G16-pick"></h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- Clear Card -->
+      <div class="col-lg-12">
+
+            <br><br><br>
+            <button id="button-clear" class="btn btn-dark clear" value="clear">clear</button>
+               
+      </div>
+  </div>
+
+  <div class="row">
+
+    <!-- Weeks Card -->
+    <div class="col-lg-12">
+
+          <br><br><br>
+          <h1 class="week-header">Pick another week</h1>
+
+          <button id="button-weeks-13" class="btn btn-success weeks" value="13">week 13</button>
+
+          <button id="button-weeks-14" class="btn btn-success weeks" value="14">week 14</button>
+
+          <button id="button-weeks-15" class="btn btn-success weeks" value="15">week 15</button>
+
+          <button id="button-weeks-16" class="btn btn-success weeks" value="16">week 16</button>
+
+          <button id="button-weeks-17" class="btn btn-success weeks" value="17">week 17</button>
+             
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+
+  $(document).ready(function() {
+
+    // Make our variables global to the runtime of our application
+
+    var homeTeamArrayW17 = ["Bills", "Panthers", "Bears", "Bengals", "Browns", "Lions", "Texans", "Patriots", 
+    "Giants", "Buccaneers", "Colts", "Chiefs", "Eagles", "Broncos", "Rams", "49ers"];
+    var awayTeamArrayW17 = ["Dolphins", "Saints", "Packers", "Ravens", "Steelers", "Vikings", "Titans", "Jets", 
+    "Cowboys", "Falcons", "Jaguars", "Chargers", "Redskins", "Raiders", "Cardinals", "Seahawks", ];
+    
+    var homeTeamArrayW13 = ["NE", "LA", "LV"]  
+    var awayTeamArrayW13 = ["DET", "NO", "SF"]
+
+    var homeTeamArray = []
+    var awayTeamArray = []
+     
+
+  function loadTeams() {
+    console.log("Hello")
+    
+
+  addBreak1 = "<h3 id='break-line'></h3>"
+  //addBreak1 = "<br>"
+  addBreak2 = "<br> <br>"
+  addAButton1 = "<button id='button' class='btn btn-primary game"
+  addAButton2 = 3
+  addAButton3 = "' value="
+  addAButton4 = "LV "
+  addAButton5 = "><span>"
+  addAButton6 = "LV "
+  addAButton7 = "</span></button>"
+  buttonSpec = ""
+  buttonSpec2 = ""
+
+  console.log(homeTeamArray.length)  
+
+  for (i = 0; i <homeTeamArray.length; i++ ) {
+    addAButton2 = i + 1
+    addAButton4 = homeTeamArray[i]
+    addAButton6 = homeTeamArray[i]
+    buttonSpec =  addBreak1 + addAButton1 + addAButton2 + addAButton3 + addAButton4 + addAButton5 + addAButton6 + addAButton7 + addBreak1 
+
+    $(".home-body").append(buttonSpec)
+
+    addAButton4 = awayTeamArray[i]
+    addAButton6 = awayTeamArray[i]
+    buttonSpec2 = addBreak1 + addAButton1 + addAButton2 + addAButton3 + addAButton4 + addAButton5 + addAButton6 + addAButton7 + addBreak1 
+
+  $(".away-body").append(buttonSpec2)
+  }
+
+  $(".btn-primary").fadeOut(0)
+
+  time = 1
+
+  for (i = 0; i <homeTeamArray.length; i++ ) {
+
+    gameNum = i + 1
+    gameLit = ".game" + gameNum
+    console.log(gameLit)
+    
+    $(gameLit).fadeIn(time)
+    //$(gameLit).slideUp
+
+    time = time + time
+  }
+}
+
+// Use a function to initialize our screen.
+// This way when the user hits clear, we can guarantee a reset of the app.
+      function initializeScreen() {
+        
+        $("#G1-pick").empty();
+        $("#G1-pick, #G2-pick, #G3-pick, #G4-pick, #G5-pick, #G6-pick, #G7-pick, #G8-pick").empty();
+        $("#G9-pick, #G10-pick, #G11-pick, #G12-pick, #G13-pick, #G14-pick, #G15-pick, #G16-pick").empty();
+      }
+
+      $(".away-body").on("click", "button", (function() {
+        //console.log(event.path[1])
+        //console.log("In Click")
+        console.log(awayTeamArray)
+        console.log(this.value)
+        //$("#G1-pick").text($(this).text());
+        //$(this).slideUp()
+
+        holdIndex = 0 
+
+        for (i = 0; i <awayTeamArray.length; i++ ) {
+          if (awayTeamArray[i] === this.value) {
+             holdIndex = i + 1
+          }  
+  
+        }
+
+        console.log(holdIndex)
+
+        pickTeam1 = "#G" + holdIndex + "-pick"
+
+        console.log(pickTeam1)
+
+        $(pickTeam1).text($(this).text());
+
+      }))
+
+      $(".home-body").on("click", "button", (function() {
+        //console.log(event.path[1])
+        //console.log("In Click")
+        console.log(awayTeamArray)
+        console.log(this.value)
+        //$("#G1-pick").text($(this).text());
+        //$(this).slideUp()
+
+        holdIndex = 0 
+
+        for (i = 0; i <homeTeamArray.length; i++ ) {
+          if (homeTeamArray[i] === this.value) {
+             holdIndex = i + 1
+          }  
+  
+        }
+
+        console.log(holdIndex)
+
+        pickTeam1 = "#G" + holdIndex + "-pick"
+
+        console.log(pickTeam1)
+
+        $(pickTeam1).text($(this).text());
+
+      }))
+      
+      // Call initializeScreen so we can reset the state of our app
+      $(".clear").on("click", function() {
+      console.log("In Clear")
+      initializeScreen();
+      });
+         
+
+      $(".weeks").on("click", function() {
+
+        $(".game1").remove();
+        $(".game2").remove();
+        $(".game3").remove();
+        $(".game4").remove();
+        $(".game5").remove();
+        $(".game6").remove();
+        $(".game7").remove();
+        $(".game8").remove();
+        $(".game9").remove();
+        $(".game10").remove();
+        $(".game11").remove();
+        $(".game12").remove();
+        $(".game13").remove();
+        $(".game14").remove();
+        $(".game15").remove();
+        $(".game16").remove();
+        
+        //$(".home-body").remove()
+        //$(".weeks").remove()
+         
+      
+        console.log("IN WEEKS BUTTON")
+        console.log($(this).val())
+        weekPicked = $(this).val()
+
+        if (weekPicked == "17") {
+          homeTeamArray = homeTeamArrayW17
+          awayTeamArray = awayTeamArrayW17
+        } else {
+          homeTeamArray = homeTeamArrayW13
+          awayTeamArray = awayTeamArrayW13
+        }
+
+        console.log(homeTeamArray)
+
+        initializeScreen();
+        loadTeams()
+  
+      })
+
+            
+      // Call initializeScreen so we can set the state of our app
+      console.log("In Init") 
+      initializeScreen();
+    });
+
+</script>
+
+</body>
+</html>

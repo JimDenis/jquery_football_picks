@@ -1,0 +1,43 @@
+/* Select all spans that are immediate children of buttons */
+button > span {
+    font-size: 2rem;
+}
+
+#button-clear {
+    background-color: red;
+    border: none;
+    color: black;
+    padding: 0px 450px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100px;
+}
+
+.weeks {
+    padding: 25px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+}
+
+#G1-pick,
+#G2-pick,
+#G3-pick,
+#G4-pick,
+#G5-pick,
+#G6-pick,
+#G7-pick,
+#G8-pick,
+#G9-pick,
+#G10-pick,
+#G11-pick,
+#G12-pick,
+#G13-pick,
+#G14-pick,
+#G15-pick,
+#G16-pick {
+    font-size: 3rem;
+    padding: 1px 1px;
+}
